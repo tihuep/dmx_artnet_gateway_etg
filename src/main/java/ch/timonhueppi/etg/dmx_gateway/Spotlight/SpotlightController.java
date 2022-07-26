@@ -1,6 +1,5 @@
-package ch.timonhueppi.etg.dmx_gateway;
+package ch.timonhueppi.etg.dmx_gateway.Spotlight;
 
-import ch.timonhueppi.etg.dmx_gateway.ArtnetHandler;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class SpotlightController {
 
     private byte brightness = 0;
+    SpotlightService spotlightService = new SpotlightService();
 
     @GetMapping("/brightness")
     public byte getBrightness() {
@@ -17,7 +17,7 @@ public class SpotlightController {
     @PostMapping("/brightness/{brightness}")
     public void setBrightness(@PathVariable byte brightness) {
         this.brightness = brightness;
-        ArtnetHandler.sendDMX(1, brightness);
+        spotlightService.setBrightness(brightness);
     }
 
 
