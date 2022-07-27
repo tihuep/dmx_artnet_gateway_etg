@@ -22,9 +22,12 @@ public class Helper {
         artnet.stop();
     }
 
-    public static void sendDMX(byte[] dmxData){
+    public static void sendDMX(byte[] newDmxData){
         ArtNetClient artnet = new ArtNetClient();
         artnet.start();
+
+        // set data
+        dmxData = newDmxData;
 
         // send data to localhost
         artnet.unicastDmx(getIP(), 0, 0, dmxData);
