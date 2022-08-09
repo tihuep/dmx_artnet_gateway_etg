@@ -25,8 +25,8 @@ public class ColorSmallService {
     }
 
     private void handleSetter(byte value, int offset){
-        int numberOfFixtures = Integer.valueOf(Helper.getProperty("colorbig.number"));
-        int startChannel = Integer.valueOf(Helper.getProperty("colorbig.channel.start"));
+        int numberOfFixtures = Integer.valueOf(Helper.getProperty("colorsmall.number"));
+        int startChannel = Integer.valueOf(Helper.getProperty("colorsmall.channel.start"));
         byte[] dmxData = Helper.dmxData;
         for (int i = 0; i < numberOfFixtures; i++){
             dmxData[(startChannel + i*6) + offset] = value;
