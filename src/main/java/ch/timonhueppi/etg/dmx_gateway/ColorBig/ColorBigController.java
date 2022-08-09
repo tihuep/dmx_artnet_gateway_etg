@@ -25,7 +25,7 @@ public class ColorBigController {
 
     private byte red = 0;
 
-    @GetMapping("/brightness")
+    @GetMapping("/red")
     public byte getRed() {
         return red;
     }
