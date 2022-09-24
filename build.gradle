@@ -19,6 +19,7 @@ dependencies {
 	implementation 'ch.bildspur:artnet4j:0.6.2'
 	implementation 'org.springframework:spring-web'
 	implementation 'org.apache.httpcomponents:httpclient'
+	implementation 'com.google.code.gson:gson:2.9.1'
 }
 
 tasks.named('test') {
