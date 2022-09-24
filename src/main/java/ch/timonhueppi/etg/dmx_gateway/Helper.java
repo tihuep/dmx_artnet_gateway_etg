@@ -29,7 +29,7 @@ public class Helper {
         // set data
         dmxData = newDmxData;
 
-        // send data to localhost
+        // send data to dmx controller
         artnet.unicastDmx(getIP(), 0, 0, dmxData);
 
         artnet.stop();
