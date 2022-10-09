@@ -4,6 +4,8 @@ import ch.timonhueppi.etg.dmx_gateway.Helper;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/dmx")
@@ -12,13 +14,30 @@ public class DirectController {
     @GetMapping("/")
     public String getDMX() {
         Gson gson = new Gson();
-        return gson.toJson(Helper.dmxData);
+        String output = gson.toJson(Helper.dmxDataInt);
+        return output;
     }
 
     @PostMapping("/")
     public boolean setDMX(@RequestBody String dmxDataStr) {
         Gson gson = new Gson();
-        byte[] dmxData = gson.fromJson(dmxDataStr, byte[].class);
+        int[] dmxData = gson.fromJson(dmxDataStr, int[].class);
+        Helper.sendDMX(dmxData);
+        return true;
+    }
+
+    @PutMapping("/")
+    public boolean setDMXValue(@RequestBody String dmxDataStr){
+        int[] dmxData = Helper.dmxDataInt;
+
+        Gson gson = new Gson();
+        Map<String, Double> map = gson.fromJson(dmxDataStr, Map.class);
+
+        for (Map.Entry<String, Double> entry : map.entrySet()) {
+            int value = entry.getValue().intValue();
+            dmxData[Integer.parseInt(entry.getKey()) - 1] = value;
+        }
+
         Helper.sendDMX(dmxData);
         return true;
     }

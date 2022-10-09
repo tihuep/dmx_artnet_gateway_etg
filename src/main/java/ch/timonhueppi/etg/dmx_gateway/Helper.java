@@ -6,9 +6,10 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Helper {
-
-    public static byte[] dmxData = new byte[512];
-
+/*
+    public static byte[] dmxData = new byte[512];*/
+    public static int[] dmxDataInt = new int[512];
+/*
     public static void sendDMX(int channel, byte value){
         ArtNetClient artnet = new ArtNetClient();
         artnet.start();
@@ -31,6 +32,26 @@ public class Helper {
 
         // send data to dmx controller
         artnet.unicastDmx(getIP(), 0, 0, dmxData);
+
+        artnet.stop();
+    }
+*/
+    public static void sendDMX(int[] newDmxData){
+        ArtNetClient artnet = new ArtNetClient();
+        artnet.start();
+
+        // set data
+        dmxDataInt = newDmxData;
+
+        byte[] dmxDataByte = new byte[512];
+        for (int i = 0; i < 512; i++){
+            dmxDataByte[i] = (byte) newDmxData[i];
+        }
+
+        //dmxData = dmxDataByte;
+
+        // send data to dmx controller
+        artnet.unicastDmx("192.168.188.24", 0, 0, dmxDataByte);
 
         artnet.stop();
     }
