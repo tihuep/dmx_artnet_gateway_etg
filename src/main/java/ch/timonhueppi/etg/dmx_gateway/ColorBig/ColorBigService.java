@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.ColorBig;
+/*package ch.timonhueppi.etg.dmx_gateway.ColorBig;
 
 import ch.timonhueppi.etg.dmx_gateway.Helper;
 
@@ -34,3 +34,4 @@ public class ColorBigService {
         Helper.sendDMX(dmxData);
     }
 }
+*/

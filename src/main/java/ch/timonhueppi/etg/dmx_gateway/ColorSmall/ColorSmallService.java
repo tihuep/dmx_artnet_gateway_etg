@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.ColorSmall;
+/*package ch.timonhueppi.etg.dmx_gateway.ColorSmall;
 
 import ch.timonhueppi.etg.dmx_gateway.Helper;
 
@@ -34,3 +34,4 @@ public class ColorSmallService {
         Helper.sendDMX(dmxData);
     }
 }
+*/

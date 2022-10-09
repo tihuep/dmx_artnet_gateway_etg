@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.Wash;
+/*package ch.timonhueppi.etg.dmx_gateway.Wash;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -37,3 +37,4 @@ public class WashController {
     }
 
 }
+*/

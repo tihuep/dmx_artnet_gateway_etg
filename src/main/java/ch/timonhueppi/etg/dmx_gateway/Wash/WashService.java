@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.Wash;
+/*package ch.timonhueppi.etg.dmx_gateway.Wash;
 
 import ch.timonhueppi.etg.dmx_gateway.Helper;
 
@@ -22,3 +22,4 @@ public class WashService {
         Helper.sendDMX(dmxData);
     }
 }
+*/

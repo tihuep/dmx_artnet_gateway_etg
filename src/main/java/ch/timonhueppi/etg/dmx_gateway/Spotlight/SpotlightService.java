@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.Spotlight;
+/*package ch.timonhueppi.etg.dmx_gateway.Spotlight;
 
 import ch.timonhueppi.etg.dmx_gateway.Helper;
 
@@ -26,3 +26,4 @@ public class SpotlightService {
     }
 
 }
+*/

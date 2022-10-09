@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.ColorBig;
+/*package ch.timonhueppi.etg.dmx_gateway.ColorBig;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -76,3 +76,4 @@ public class ColorBigController {
     }
 
 }
+*/

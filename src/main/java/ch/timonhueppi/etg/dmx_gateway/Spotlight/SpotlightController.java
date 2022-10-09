@@ -1,4 +1,4 @@
-package ch.timonhueppi.etg.dmx_gateway.Spotlight;
+/*package ch.timonhueppi.etg.dmx_gateway.Spotlight;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -42,3 +42,4 @@ public class SpotlightController {
         System.out.println("temp: " + temp);
     }
 }
+*/
