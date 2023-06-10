@@ -28,7 +28,11 @@ public class DirectController {
 
     @PutMapping("/")
     public boolean setDMXValue(@RequestBody String dmxDataStr){
-        int[] dmxData = Helper.dmxDataInt;
+        int[] dmxData = new int[512];
+
+        for (int i = 0; i < 512; i++){
+            dmxData[i] = Helper.dmxDataInt[i];
+        }
 
         Gson gson = new Gson();
         Map<String, Double> map = gson.fromJson(dmxDataStr, Map.class);

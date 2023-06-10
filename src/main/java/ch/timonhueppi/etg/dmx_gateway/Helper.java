@@ -4,11 +4,13 @@ import ch.bildspur.artnet.ArtNetClient;
 
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class Helper {
 /*
     public static byte[] dmxData = new byte[512];*/
     public static int[] dmxDataInt = new int[512];
+    public static int[] dmxDataIntTemp = new int[512];
 /*
     public static void sendDMX(int channel, byte value){
         ArtNetClient artnet = new ArtNetClient();
@@ -40,25 +42,38 @@ public class Helper {
         ArtNetClient artnet = new ArtNetClient();
         artnet.start();
 
+        int duration = 2000;
+        String ip = "192.168.188.24";
+
+        for (int j = 1; j <= (duration/50); j++){
+            for (int k = 0; k < 512; k++) {
+                float diff = (float) newDmxData[k] - dmxDataInt[k];
+                float increment = diff / (duration/50) * j;
+
+
+                dmxDataIntTemp[k] = dmxDataInt[k] + (int) increment;
+
+            }
+
+            byte[] dmxDataByte = new byte[512];
+            for (int i = 0; i < 512; i++){
+                dmxDataByte[i] = (byte) dmxDataIntTemp[i];
+            }
+
+            // send data to dmx controller
+            artnet.unicastDmx(ip, 0, 0, dmxDataByte);
+
+            try {
+                TimeUnit.MILLISECONDS.sleep(50);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+
         // set data
         dmxDataInt = newDmxData;
 
-        byte[] dmxDataByte = new byte[512];
-        for (int i = 0; i < 512; i++){
-            dmxDataByte[i] = (byte) newDmxData[i];
-        }
-
-        //dmxData = dmxDataByte;
-
-        // send data to dmx controller
-        artnet.unicastDmx("192.168.188.24", 0, 0, dmxDataByte);
-
         artnet.stop();
-    }
-
-    private static String getIP(){
-        String ip = getProperty("artnet_ip");
-        return ip != null ? ip : "127.0.0.1";
     }
 
     public static String getProperty(String key){
